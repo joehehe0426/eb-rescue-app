@@ -14,21 +14,23 @@ export const Registration: React.FC<RegistrationProps> = ({ onVerify }) => {
   const handleSendCode = () => {
     if (phone.length < 8) return;
     setLoading(true);
-    // Simulate SMS API call
+    
+    // Simulate SMS Network Delay
     setTimeout(() => {
       setLoading(false);
       setStep('VERIFY');
-      // In a real app, this would be handled by a backend SMS service.
-      // Keeping the alert for usability in this environment so you can log in.
-      alert(`驗證碼已發送 (測試碼: 8888)`);
+      // In production, the SMS is sent via backend. 
+      // For testing purposes, the code is silently logged to console.
+      console.log(`[System] SMS Sent to ${phone}. Code: 8888`);
     }, 1500);
   };
 
   const handleVerify = () => {
+    // Hardcoded check for internal testing/admin access
     if (code === '8888') {
       onVerify(phone);
     } else {
-      alert("驗證碼錯誤 (請輸入 8888)");
+      alert("驗證碼錯誤 (Invalid Code)");
     }
   };
 
