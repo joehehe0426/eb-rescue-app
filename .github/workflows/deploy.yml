@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+# When to run this workflow
+on:
+  push:
+    branches:
+      - main  # Run when you push to main branch
+  workflow_dispatch:  # Allow manual trigger
+
+# Permissions needed
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevent multiple deployments at once
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    # Set up GitHub Pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      # Step 1: Get your code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'  # Cache npm for faster builds
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci  # ci is faster and more reliable than npm install
+
+      # Step 4: Build your app
+      - name: Build app
+        run: npm run build
+        env:
+          # Environment variables for build
+          VITE_AI_PROVIDER: ${{ secrets.VITE_AI_PROVIDER || 'huggingface' }}
+          VITE_HUGGINGFACE_API_KEY: ${{ secrets.VITE_HUGGINGFACE_API_KEY }}
+
+      # Step 5: Set up GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # Step 6: Upload build files
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'  # Vite builds to 'dist' folder
+
+      # Step 7: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
