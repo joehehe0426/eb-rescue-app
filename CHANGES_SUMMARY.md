@@ -6,7 +6,7 @@
 - **Dashboard**: Rim design service removed from service list
 - **App.tsx**: Shows "coming soon" message when rim-design is accessed
 - **Status**: Feature held for premium users (coming soon)
-
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ### 2. Hugging Face Setup - Default for Tire Analysis
 - **Default Provider**: Hugging Face is now the default AI provider
 - **Configuration**: Set via `VITE_AI_PROVIDER=huggingface` in `.env`
