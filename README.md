@@ -12,6 +12,17 @@ A modern Progressive Web App (PWA) for 24/7 emergency rescue services in Hong Ko
 - 📍 Location-based services
 - 🗄️ **Database Integration** - All customer and order data saved automatically
 
+A modern Progressive Web App (PWA) for 24/7 tire repair services in Hong Kong, featuring AI-powered tire analysis and rim design visualization.
+
+## Features
+
+- 🚨 Emergency tire repair requests with AI analysis
+- 📅 24-hour tire change service booking
+- 🎨 AI-powered rim design visualization
+- 📱 Progressive Web App (PWA) support
+- 💾 Local data persistence
+- 📍 Location-based services
+
 ## Logo Setup
 
 To display the custom logo, please upload your image file named `logo.png` to the **root directory** of this project.
