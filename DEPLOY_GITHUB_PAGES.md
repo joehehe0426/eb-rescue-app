@@ -8,9 +8,13 @@
 2. **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Add:
-   - **Name**: `API_KEY`
-   - **Value**: Your Google Gemini API key
+   - **Name**: `VITE_AI_PROVIDER`
+   - **Value**: `huggingface`
 5. Click **Add secret**
+
+**Optional**: For higher rate limits, also add:
+   - **Name**: `VITE_HUGGINGFACE_API_KEY`
+   - **Value**: Your Hugging Face API key (get at huggingface.co)
 
 ### Step 2: Enable GitHub Pages
 

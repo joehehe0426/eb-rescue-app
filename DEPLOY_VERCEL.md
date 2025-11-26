@@ -22,9 +22,12 @@
 4. **Add Environment Variable**
    - Click **Environment Variables**
    - Add:
-     - **Key**: `API_KEY`
-     - **Value**: Your Google Gemini API key
+     - **Key**: `VITE_AI_PROVIDER`
+     - **Value**: `huggingface`
      - **Environments**: Production, Preview, Development
+   - (Optional) For higher rate limits, also add:
+     - **Key**: `VITE_HUGGINGFACE_API_KEY`
+     - **Value**: Your Hugging Face API key
 
 5. **Deploy**
    - Click **Deploy**
